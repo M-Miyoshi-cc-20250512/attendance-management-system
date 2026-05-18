@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('attendance_breaks', function (Blueprint $table) {
+        Schema::create('departments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('attendance_daily_id');
+
+            $table->string('code', 20)
+                ->unique();
+
+            $table->string('name', 100);
+            
             $table->timestamps();
         });
     }
@@ -23,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('attendance_breaks');
+        Schema::dropIfExists('departments');
     }
 };
