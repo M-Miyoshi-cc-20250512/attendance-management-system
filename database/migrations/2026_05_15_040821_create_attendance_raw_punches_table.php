@@ -26,9 +26,13 @@ return new class extends Migration
 
             $table->decimal('longitude', 10, 7);
 
+            $table->foreignId('location_id')
+                ->constrained('locations')
+                ->onDelete('cascade');
+
             $table->string('source', 20);
             
-            $table->timestamps('create_at')->useCurrent();
+            $table->timestamps();
         });
     }
 
