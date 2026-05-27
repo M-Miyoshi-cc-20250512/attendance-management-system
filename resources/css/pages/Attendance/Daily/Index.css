@@ -1,0 +1,91 @@
+.daily-container {
+    /* padding: 30px; */
+    background-color: #f5f7fb;
+    min-height: 100vh;
+}
+
+.daily-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.month-text {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.month-button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.2s;
+}
+
+.month-button:hover {
+    background-color: #e9eefc;
+}
+
+.daily-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.daily-table thead {
+    background-color: #4f46e5;
+    color: white;
+}
+
+.daily-table th {
+    padding: 16px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    border-right: 1px solid #6366f1;
+}
+
+.daily-table td {
+    padding: 14px;
+    border-bottom: 1px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
+    text-align: center;
+    font-size: 14px;
+}
+
+.daily-table th:last-child,
+.daily-table td:last-child {
+    border-right: none;
+}
+
+.daily-table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+.date-cell {
+    font-weight: bold;
+}
+
+.status-cell {
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.saturday-row {
+    background-color: #eff6ff;
+}
+
+.sunday-row {
+    background-color: #fef2f2;
+}
