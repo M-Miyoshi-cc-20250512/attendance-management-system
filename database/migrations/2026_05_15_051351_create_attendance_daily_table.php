@@ -21,7 +21,8 @@ return new class extends Migration
             $table->date('target_date');
 
             $table->foreignId('work_type_id')
-                ->constraind('work_type_master');
+                ->nullable()
+                ->constrained('work_type_master');
 
             $table->foreignId('location_id')
                 ->constrained('locations');
@@ -57,7 +58,7 @@ return new class extends Migration
 
             $table->integer('actual_work_minutes')
                 ->nullable();
-            
+
             $table->integer('overtime_minutes')
                 ->nullable();
 
@@ -66,7 +67,7 @@ return new class extends Migration
 
             $table->timestamps();
 
-            $table->unique(['user_id','target_date']);  
+            $table->unique(['user_id', 'target_date']);
         });
     }
 

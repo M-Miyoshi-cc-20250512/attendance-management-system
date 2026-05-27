@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AttendancePunchController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\AttendanceDailyController;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -26,9 +27,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     // 打刻
-    Route::get('/attendance', [AttendancePunchController::class, 'index']);
+    Route::get('/attendance', [AttendancePunchController::class, 'index'])->name('attendance');
     Route::post('/attendance/start', [AttendanceController::class, 'start']);
     Route::post('/attendance/end', [AttendanceController::class, 'end']);
+    Route::get('/attendance/status', [AttendanceController::class, 'status']);
+    // 日次申請
+    Route::get('/attendance/daily', [AttendanceDailyController::class, 'index']);
+    Route::post('/attendance/daily/monthly', [AttendanceDailyController::class, 'monthly']);
+    Route::get('/attendance/daily/{id}/edit',[AttendanceDailyController::class,'edit']);
+    
 });
 
 require __DIR__.'/auth.php';
