@@ -9,7 +9,7 @@ export default function Index() {
     const [position, setPosition] = useState(null);
     const [isWorking, setIsWorking] = useState(false);
     const [locations, setLocations] = useState([]);
-    const [selectedLocation, setSelectedLocation] = useState('');
+    const [selectedLocation, setSelectedLocation] = useState(1);
     const [workLocationId, setWorkLocationId] = useState(null);
 
     useEffect(() => {
@@ -92,13 +92,23 @@ export default function Index() {
 
             fetchLocations();
 
+            const fetchStatus = async () => {
+                const response = await fetch('/attendance/status');
+                const data = await response.json();
+                setIsWorking(data.is_working);
+                if (data.location_id) {
+                    setWorkLocationId(data.location_id);
+                }
+            }
+
+            fetchStatus();
+
         });
         return () => clearInterval(timer);
     }, []);
 
     // 出勤処理
     const handleWorkStart = async () => {
-
         const response = await fetch('/attendance/start', {
             method: 'POST',
             headers: {
@@ -158,7 +168,7 @@ export default function Index() {
 
                 <select
                     value={selectedLocation}
-                    onChange={(event) => setSelectedLocation(event.target.value)}
+                    onChange={(event) => setSelectedLocation(Number(event.target.value))}
                     disabled={isWorking}
                 >
                     {locations.map((location) => (

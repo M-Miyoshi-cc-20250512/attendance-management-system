@@ -8,7 +8,11 @@ import {
     Monitor
 } from "lucide-react";
 
+import { Link, usePage } from "@inertiajs/react";
+
 export default function Header() {
+
+    const { url } = usePage();
 
     return (
 
@@ -29,21 +33,19 @@ export default function Header() {
 
                 <div className="menu">
 
-                    <div className="menu-item">
-
+                    <Link href="/attendance" className={`menu-item ${url === "/attendance" ? "active" : ""}`}>
                         <Clock3 size={28} />
 
                         <p>打刻</p>
 
-                    </div>
+                    </Link>
 
-                    <div className="menu-item">
-
+                    <Link href="/attendance/daily" className={`menu-item ${url === "/attendance/daily" ? "active" : ""}`}>
                         <CalendarDays size={28} />
 
                         <p>日次勤怠</p>
 
-                    </div>
+                    </Link>
 
                     <div className="menu-item">
 
