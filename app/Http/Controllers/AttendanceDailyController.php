@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\AttendanceDaily;
+use App\Models\WorkTypeMaster;
 
 class AttendanceDailyController extends Controller
 {
@@ -36,10 +37,13 @@ class AttendanceDailyController extends Controller
             ->where('user_id', Auth::id())
             ->findOrFail($id);
 
+        $workTypes = WorkTypeMaster::all();
+
         return Inertia::render(
             'Attendance/Daily/Edit',
             [
                 'attendance' => $attendance,
+                'workTypes' => $workTypes,
             ]
         );
     }
