@@ -35,6 +35,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/attendance/daily', [AttendanceDailyController::class, 'index']);
     Route::post('/attendance/daily/monthly', [AttendanceDailyController::class, 'monthly']);
     Route::get('/attendance/daily/{id}/edit',[AttendanceDailyController::class,'edit']);
+    Route::put('/attendance/daily/{id}',[AttendanceDailyController::class, 'update']
+);
     
 });
 

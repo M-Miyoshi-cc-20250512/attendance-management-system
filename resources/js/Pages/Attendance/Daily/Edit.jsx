@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { router } from "@inertiajs/react";
 
 export default function Edit({ attendance, workTypes }) {
 
@@ -9,6 +10,7 @@ export default function Edit({ attendance, workTypes }) {
         end_at: attendance.end_at?.substring(11, 16) ?? '',
         break_start: '',
         break_end: '',
+        transportation_cost: attendance.transportation_cost ?? '',
         remarks: attendance.remarks ?? '',
     });
 
@@ -38,16 +40,6 @@ export default function Edit({ attendance, workTypes }) {
     let breakStart = '';
     let breakEnd = '';
 
-    useEffect(() => {
-        if (breakStart && breakEnd){
-            setForm((prev) => ({
-                ...prev,
-                break_start: breakStart,
-                break_end: breakEnd,
-            }));
-        }
-    },[breakStart, breakEnd]);
-    
     if (breakMinutes > 0) {
         // 勤務時間の真ん中
         const middleMinutes =
@@ -68,7 +60,12 @@ export default function Edit({ attendance, workTypes }) {
                     Math.floor(minutes / 60)
                 ).padStart(2, '0');
 
-            return hour + ':' + minutes;
+            const minute =
+                String(
+                    minutes % 60
+                ).padStart(2, '0');
+
+            return hour + ':' + minute;
         };
 
         breakStart =
@@ -77,9 +74,22 @@ export default function Edit({ attendance, workTypes }) {
             formatTime(breakEndMinutes);
     }
 
+    useEffect(() => {
+        if (breakStart && breakEnd) {
+            setForm((prev) => ({
+                ...prev,
+                break_start: breakStart,
+                break_end: breakEnd,
+            }));
+        }
+    }, [breakStart, breakEnd]);
 
-
-    console.log(workTypes);
+    const submit = () => {
+        router.put(
+            `/attendance/daily/${attendance.id}`,
+            form
+        );
+    };
 
     return (
 
@@ -89,9 +99,9 @@ export default function Edit({ attendance, workTypes }) {
                 日次勤怠編集
             </h1>
 
-            <p>
-                ID：{attendance.id}
-            </p>
+            <button onClick={submit}>
+                登録する
+            </button>
 
             <p>
                 日付：{attendance.target_date}
@@ -155,6 +165,78 @@ export default function Edit({ attendance, workTypes }) {
                         setForm({
                             ...form,
                             end_at: e.target.value
+                        })
+                    }
+                />
+
+            </div>
+
+            <div>
+                <label>
+                    休憩開始
+                </label>
+                <input
+                    type="time"
+                    value={form.break_start}
+                    onChange={(e) =>
+                        setForm({
+                            ...form,
+                            break_start: e.target.value
+                        })
+                    }
+                />
+            </div>
+
+            <div>
+                <label>
+                    休憩終了
+                </label>
+
+                <input
+                    type="time"
+                    value={form.break_end}
+                    onChange={(e) =>
+                        setForm({
+                            ...form,
+                            break_end: e.target.value
+                        })
+                    }
+                />
+            </div>
+
+            <div>
+
+                <label>
+                    交通費
+                </label>
+
+                <input
+                    type="number"
+                    value={form.transportation_cost}
+                    onChange={(e) =>
+                        setForm({
+                            ...form,
+                            transportation_cost:
+                                e.target.value
+                        })
+                    }
+                />
+                <span>
+                    円
+                </span>
+
+            </div>
+
+            <div>
+                <label>
+                    備考
+                </label>
+                <textarea
+                    value={form.remarks}
+                    onChange={(e) =>
+                        setForm({
+                            ...form,
+                            remarks: e.target.value
                         })
                     }
                 />
