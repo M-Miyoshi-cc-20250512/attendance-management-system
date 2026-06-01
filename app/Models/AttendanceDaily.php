@@ -32,4 +32,12 @@ class AttendanceDaily extends Model
     {
         return $this->belongsTo(WorkTypeMaster::class);
     }
+
+    public function attendanceBreak()
+    {
+        return $this->hasOne(
+            AttendanceBreak::class,
+            'attendance_daily_id'
+        );
+    }
 }

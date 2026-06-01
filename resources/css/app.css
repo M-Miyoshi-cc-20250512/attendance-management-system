@@ -1,6 +1,7 @@
 @import "./components/Header.css";
 @import "./pages/attendance.css";
 @import "./pages/Attendance/Daily/Index.css";
+@import "./pages/Attendance/Daily/Edit.css";
 
 @tailwind base;
 @tailwind components;

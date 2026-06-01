@@ -247,17 +247,56 @@ export default function Index() {
 
                             {/* 出勤 */}
                             <td>
-                                {row.attendance?.start_at ?? '-'}
+                                {
+                                    row.attendance?.start_at
+                                        ? row.attendance.start_at.substring(11, 16)
+                                        : '-'
+                                }
                             </td>
 
                             {/* 退勤 */}
                             <td>
-                                {row.attendance?.end_at ?? '-'}
+
+                                {
+                                    row.attendance?.end_at
+                                        ? row.attendance.end_at.substring(11, 16)
+                                        : '-'
+                                }
+
                             </td>
 
                             {/* 休憩 */}
                             <td>
-                                {row.attendance?.break_time ?? '0:00'}
+                                {
+                                    row.attendance?.attendance_break
+                                        ? (() => {
+
+                                            const start = new Date(
+                                                row.attendance.attendance_break.break_start_at
+                                            );
+
+                                            const end = new Date(
+                                                row.attendance.attendance_break.break_end_at
+                                            );
+
+                                            const diffMinutes =
+                                                (end - start) / 1000 / 60;
+
+                                            const hour =
+                                                Math.floor(diffMinutes / 60);
+
+                                            const minute =
+                                                diffMinutes % 60;
+
+                                            return (
+                                                hour +
+                                                ':' +
+                                                String(minute).padStart(2, '0')
+                                            );
+
+                                        })()
+                                        : '0:00'
+                                }
                             </td>
 
                             {/* ステータス */}

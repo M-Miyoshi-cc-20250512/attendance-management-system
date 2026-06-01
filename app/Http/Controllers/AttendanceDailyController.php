@@ -9,6 +9,7 @@ use App\Models\AttendanceDaily;
 use App\Models\WorkTypeMaster;
 use App\Models\AttendanceBreak;
 use App\Models\UserWorkSetting;
+use App\Models\Location;
 
 class AttendanceDailyController extends Controller
 {
@@ -24,7 +25,10 @@ class AttendanceDailyController extends Controller
         $start = $month . '-01';
         $end = date('Y-m-t', strtotime($start));
 
-        $data = AttendanceDaily::with('workType')
+        $data = AttendanceDaily::with([
+            'workType',
+            'attendanceBreak'
+        ])
             ->where('user_id', Auth::id())
             ->whereBetween('target_date', [$start, $end])
             ->orderBy('target_date')
@@ -40,12 +44,14 @@ class AttendanceDailyController extends Controller
             ->findOrFail($id);
 
         $workTypes = WorkTypeMaster::all();
+        $locations = Location::all();
 
         return Inertia::render(
             'Attendance/Daily/Edit',
             [
                 'attendance' => $attendance,
                 'workTypes' => $workTypes,
+                'locations' => $locations,
             ]
         );
     }
