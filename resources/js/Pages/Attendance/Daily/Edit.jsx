@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { router } from "@inertiajs/react";
 
-export default function Edit({ attendance, workTypes }) {
+export default function Edit({ attendance, workTypes, locations }) {
 
     const [form, setForm] = useState({
         work_type_id: attendance.work_type_id,
@@ -93,160 +93,224 @@ export default function Edit({ attendance, workTypes }) {
 
     return (
 
-        <div>
+        <div className="attendance-edit">
 
-            <h1>
-                日次勤怠編集
+            <div className="attendance-edit__header">
+            <h1 className="attendance-edit__title">
+                日次勤怠
             </h1>
 
-            <button onClick={submit}>
-                登録する
+            <button
+                className="attendance-edit__back-button"
+                onClick={() => router.get('/attendance/daily')}
+            >
+                戻る
             </button>
+            </div>
 
-            <p>
-                日付：{attendance.target_date}
-            </p>
+            <div className="attendance-edit__actions">
 
-            <div>
-                <label>
-                    勤務区分
-                </label>
-                <select
-                    value={form.work_type_id}
-                    onChange={(e) =>
-                        setForm({
-                            ...form,
-                            work_type_id: e.target.value
-                        })
-                    }
+                <button
+                    className="attendance-edit__button"
+                    onClick={submit}
                 >
-                    {workTypes.map((workType) => (
+                    登録する
+                </button>
 
-                        <option
-                            key={workType.id}
-                            value={workType.id}
+                <button
+                    className="attendance-edit__button"
+                >
+                    申請する
+                </button>
+
+            </div>
+
+            <div className="attendance-edit__table">
+
+                <div className="attendance-edit__row">
+                    <div className="attendance-edit__label">
+                        日付
+                    </div>
+                    <div className="attendance-edit__value">
+                        {attendance.target_date}
+                    </div>
+                </div>
+
+                <div className="attendance-edit__row">
+                    <div className="attendance-edit__label">
+                        勤務区分
+                    </div>
+                    <div className="attendance-edit__value">
+                        <select
+                            value={form.work_type_id}
+                            onChange={(e) =>
+                                setForm({
+                                    ...form,
+                                    work_type_id: e.target.value
+                                })
+                            }
                         >
-                            {workType.name}
-                        </option>
-                    ))}
+                            {workTypes.map((workType) => (
+                                <option
+                                    key={workType.id}
+                                    value={workType.id}
+                                >
+                                    {workType.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
 
-                </select>
+                <div className="attendance-edit__row">
+                    <div className="attendance-edit__label">
+                        打刻拠点
+                    </div>
+                    <div className="attendance-edit__value">
+                        <select
+                            value={form.location_id}
+                            onChange={(e) =>
+                                setForm({
+                                    ...form,
+                                    location_id: e.target.value
+                                })
+                            }
+                        >
+                            <option value="">
+                                選択してください
+                            </option>
+
+                            {locations.map((location) => (
+                                <option
+                                    key={location.id}
+                                    value={location.id}
+                                >
+                                    {location.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
+
+                <div className="attendance-edit__row">
+                    <div className="attendance-edit__label">
+                        出勤時刻
+                    </div>
+                    <div className="attendance-edit__value">
+                        <input
+                            type="time"
+                            value={form.start_at}
+                            onChange={(e) =>
+                                setForm({
+                                    ...form,
+                                    start_at: e.target.value
+                                })
+                            }
+                        />
+                    </div>
+                </div>
+
+                <div className="attendance-edit__row">
+                    <div className="attendance-edit__label">
+                        退勤時刻
+                    </div>
+                    <div className="attendance-edit__value">
+                        <input
+                            type="time"
+                            value={form.end_at}
+                            onChange={(e) =>
+                                setForm({
+                                    ...form,
+                                    end_at: e.target.value
+                                })
+                            }
+                        />
+                    </div>
+                </div>
+
+                <div className="attendance-edit__row">
+                    <div className="attendance-edit__label">
+                        休憩開始
+                    </div>
+                    <div className="attendance-edit__value">
+                        <input
+                            type="time"
+                            value={form.break_start}
+                            onChange={(e) =>
+                                setForm({
+                                    ...form,
+                                    break_start: e.target.value
+                                })
+                            }
+                        />
+                    </div>
+                </div>
+
+                <div className="attendance-edit__row">
+                    <div className="attendance-edit__label">
+                        休憩終了
+                    </div>
+                    <div className="attendance-edit__value">
+                        <input
+                            type="time"
+                            value={form.break_end}
+                            onChange={(e) =>
+                                setForm({
+                                    ...form,
+                                    break_end: e.target.value
+                                })
+                            }
+                        />
+                    </div>
+                </div>
+
+                <div className="attendance-edit__row">
+                    <div className="attendance-edit__label">
+                        交通費
+                    </div>
+                    <div className="attendance-edit__value">
+                        <input
+                            type="number"
+                            value={form.transportation_cost}
+                            onChange={(e) =>
+                                setForm({
+                                    ...form,
+                                    transportation_cost:
+                                        e.target.value
+                                })
+                            }
+                        />
+                        円
+                    </div>
+                </div>
+
+                <div className="attendance-edit__row">
+                    <div className="attendance-edit__label">
+                        備考
+                    </div>
+                    <div className="attendance-edit__value">
+                        <textarea
+                            value={form.remarks}
+                            onChange={(e) =>
+                                setForm({
+                                    ...form,
+                                    remarks: e.target.value
+                                })
+                            }
+                        />
+                    </div>
+                </div>
+
+                <div className="attendance-edit__row">
+                    <div className="attendance-edit__label">
+                        ステータス
+                    </div>
+                    <div className="attendance-edit__value">
+                        {attendance.status}
+                    </div>
+                </div>
+
             </div>
-
-            <div>
-
-                <label>
-                    出勤時刻
-                </label>
-
-                <input
-                    type="time"
-                    value={form.start_at}
-                    onChange={(e) =>
-                        setForm({
-                            ...form,
-                            start_at: e.target.value
-                        })
-                    }
-                />
-
-            </div>
-
-            <div>
-
-                <label>
-                    退勤時刻
-                </label>
-
-                <input
-                    type="time"
-                    value={form.end_at}
-                    onChange={(e) =>
-                        setForm({
-                            ...form,
-                            end_at: e.target.value
-                        })
-                    }
-                />
-
-            </div>
-
-            <div>
-                <label>
-                    休憩開始
-                </label>
-                <input
-                    type="time"
-                    value={form.break_start}
-                    onChange={(e) =>
-                        setForm({
-                            ...form,
-                            break_start: e.target.value
-                        })
-                    }
-                />
-            </div>
-
-            <div>
-                <label>
-                    休憩終了
-                </label>
-
-                <input
-                    type="time"
-                    value={form.break_end}
-                    onChange={(e) =>
-                        setForm({
-                            ...form,
-                            break_end: e.target.value
-                        })
-                    }
-                />
-            </div>
-
-            <div>
-
-                <label>
-                    交通費
-                </label>
-
-                <input
-                    type="number"
-                    value={form.transportation_cost}
-                    onChange={(e) =>
-                        setForm({
-                            ...form,
-                            transportation_cost:
-                                e.target.value
-                        })
-                    }
-                />
-                <span>
-                    円
-                </span>
-
-            </div>
-
-            <div>
-                <label>
-                    備考
-                </label>
-                <textarea
-                    value={form.remarks}
-                    onChange={(e) =>
-                        setForm({
-                            ...form,
-                            remarks: e.target.value
-                        })
-                    }
-                />
-
-            </div>
-
-            <p>
-                ステータス：
-                {attendance.status}
-            </p>
 
         </div>
 
