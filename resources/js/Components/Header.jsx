@@ -55,13 +55,13 @@ export default function Header() {
 
                     </div>
 
-                    <div className="menu-item">
+                    <Link href="/attendance/approval" className={`menu-item ${url === "/attendance/approval" ? "active" : ""}`}>
 
                         <CheckCheck size={28} />
 
                         <p>勤怠承認</p>
 
-                    </div>
+                    </Link>
 
                     <div className="menu-item">
 
