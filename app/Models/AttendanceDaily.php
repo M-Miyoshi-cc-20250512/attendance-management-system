@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\WorkTypeMaster;
+use App\Models\User;
+use App\Models\Location;
 
 class AttendanceDaily extends Model
 {
@@ -28,14 +30,23 @@ class AttendanceDaily extends Model
     ];
 
     public function workType()
-
     {
         return $this->belongsTo(WorkTypeMaster::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
+
     public function attendanceBreak()
     {
-        return $this->hasOne(
+        return $this->hasMany(
             AttendanceBreak::class,
             'attendance_daily_id'
         );

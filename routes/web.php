@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AttendancePunchController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AttendanceDailyController;
+use App\Http\Controllers\AttendanceApprovalController;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -35,8 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/attendance/daily', [AttendanceDailyController::class, 'index']);
     Route::post('/attendance/daily/monthly', [AttendanceDailyController::class, 'monthly']);
     Route::get('/attendance/daily/{id}/edit',[AttendanceDailyController::class,'edit']);
-    Route::put('/attendance/daily/{id}',[AttendanceDailyController::class, 'update']
-);
+    Route::put('/attendance/daily/{id}',[AttendanceDailyController::class, 'update']);
+    
+    Route::get('/attendance/approval',[AttendanceApprovalController::class, 'index']);
     
 });
 

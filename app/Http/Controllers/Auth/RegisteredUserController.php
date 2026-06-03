@@ -31,6 +31,12 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        $lastUser = User::orderBy('id', 'desc')->first();
+
+        $nextEmployeeNo = $lastUser
+            ? str_pad($lastUser->id + 1, 5, '0', STR_PAD_LEFT)
+            : '00001';
+        
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
@@ -38,6 +44,7 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
+            'employee_no' => $nextEmployeeNo,
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
