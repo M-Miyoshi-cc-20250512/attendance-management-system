@@ -142,4 +142,17 @@ class AttendanceDailyController extends Controller
 
         return redirect('/attendance/daily');
     }
+
+    public function apply($id)
+    {
+        $attendance = AttendanceDaily::findOrFail($id);
+
+        $attendance->update([
+            'status' => '申請中',
+        ]);
+
+        return response()->json([
+            'message' => '申請しました'
+        ]);
+    }
 }

@@ -9,12 +9,14 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\UserWorkSetting;
 
 #[Fillable(['employee_no', 'name', 'email', 'password'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
+
     use HasFactory, Notifiable;
 
     /**
@@ -28,5 +30,15 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function workSetting()
+    {
+        return $this->hasOne(userWorkSetting::class);
+    }
+
+    public function attendanceDaily()
+    {
+        return $this->hasMany(AttendanceDaily::class);
     }
 }

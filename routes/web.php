@@ -37,8 +37,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/attendance/daily/monthly', [AttendanceDailyController::class, 'monthly']);
     Route::get('/attendance/daily/{id}/edit',[AttendanceDailyController::class,'edit']);
     Route::put('/attendance/daily/{id}',[AttendanceDailyController::class, 'update']);
-    
+    Route::post('/attendance/daily/{id}/apply',[AttendanceDailyController::class, 'apply']);
+
     Route::get('/attendance/approval',[AttendanceApprovalController::class, 'index']);
+    Route::get('/attendance/approval/list',[AttendanceApprovalController::class, 'list']
+);
     
 });
 

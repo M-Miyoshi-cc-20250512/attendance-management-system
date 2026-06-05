@@ -46,7 +46,7 @@ class AttendanceDaily extends Model
 
     public function attendanceBreak()
     {
-        return $this->hasMany(
+        return $this->hasOne(
             AttendanceBreak::class,
             'attendance_daily_id'
         );

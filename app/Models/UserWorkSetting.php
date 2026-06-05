@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class UserWorkSetting extends Model
 {
@@ -17,4 +18,9 @@ class UserWorkSetting extends Model
         'valid_from',
         'valid_to',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

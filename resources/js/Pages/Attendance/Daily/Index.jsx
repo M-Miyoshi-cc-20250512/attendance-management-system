@@ -157,6 +157,23 @@ export default function Index() {
         setData(json);
     };
 
+    const applyAttendance = async (attendanceId) => {
+        await fetch(
+            `/attendance/daily/${attendanceId}/apply`,
+            {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document
+                        .querySelector(
+                            'meta[name="csrf-token"]'
+                        )
+                        .content,
+                },
+            }
+        );
+        fetchData();
+    };
+
     return (
 
         <div className="daily-container">
@@ -308,7 +325,13 @@ export default function Index() {
                                     row.attendance?.status === '未申請'
                                 ) && (
 
-                                        <button>
+                                        <button
+                                            onClick={() =>
+                                                applyAttendance(
+                                                    row.attendance.id
+                                                )
+                                            }
+                                        >
                                             申請
                                         </button>
                                     )}
