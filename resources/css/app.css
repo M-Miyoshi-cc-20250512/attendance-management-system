@@ -2,7 +2,7 @@
 @import "./pages/attendance.css";
 @import "./pages/Attendance/Daily/Index.css";
 @import "./pages/Attendance/Daily/Edit.css";
-
+@import "./pages/Attendance/Approval/Index.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

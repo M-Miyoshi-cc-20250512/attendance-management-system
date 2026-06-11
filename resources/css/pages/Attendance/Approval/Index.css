@@ -1,0 +1,95 @@
+.approval-header{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:15px;
+    flex-wrap:wrap;
+}
+
+.approval-header input,
+.approval-header select{
+    height:40px;
+    border:1px solid #dcdfe6;
+    border-radius:4px;
+}
+
+.approval-table{
+    width:100%;
+    border-collapse:collapse;
+    background:#fff;
+    font-size:12px;
+    table-layout:auto;
+}
+
+.approval-table th{
+    background:#f5f7fa;
+    border:1px solid #dcdfe6;
+    padding:4px 8px;
+    text-align:center;
+    white-space:nowrap;
+}
+
+.approval-table td{
+    border:1px solid #dcdfe6;
+    padding:4px 8px;
+    text-align:center;
+    white-space:nowrap;
+}
+
+.approval-table tr:hover{
+    background:#f9fbff;
+}
+
+/* 社員列 */
+.approval-table th:nth-child(2),
+.approval-table td:nth-child(2){
+    width:120px;
+}
+
+/* 勤務区分 */
+.approval-table th:nth-child(3),
+.approval-table td:nth-child(3){
+    width:90px;
+}
+
+/* 打刻拠点 */
+.approval-table th:nth-child(4),
+.approval-table td:nth-child(4){
+    width:90px;
+}
+
+/* 出勤・退勤・休憩 */
+.approval-table th:nth-child(5),
+.approval-table td:nth-child(5),
+.approval-table th:nth-child(6),
+.approval-table td:nth-child(6),
+.approval-table th:nth-child(7),
+.approval-table td:nth-child(7){
+    width:70px;
+}
+
+/* 備考列 */
+.remarks-column{
+    width:100%;
+    text-align:center !important;
+    white-space:normal !important;
+    word-break:break-word;
+}
+
+/* ボタン */
+.approve-button,
+.reject-button{
+    background:#409eff;
+    color:#fff;
+    border:none;
+    border-radius:4px;
+    padding:4px 10px;
+    /* font-size:12px; */
+    cursor:pointer;
+    height: 40px;
+}
+
+.approve-button:hover,
+.reject-button:hover{
+    background:#337ecc;
+}

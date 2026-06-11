@@ -355,9 +355,15 @@ export default function Index() {
                                 {/* 差し戻し */}
                                 {row.attendance?.status === '差し戻し' && (
 
-                                    <span>
-                                        差し戻し
-                                    </span>
+                                    <button
+                                        onClick={() =>
+                                            applyAttendance(
+                                                row.attendance.id
+                                            )
+                                        }
+                                    >
+                                        申請
+                                    </button>
                                 )}
 
                                 {/* 月締完了 */}

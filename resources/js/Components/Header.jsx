@@ -47,14 +47,6 @@ export default function Header() {
 
                     </Link>
 
-                    <div className="menu-item">
-
-                        <BookOpen size={28} />
-
-                        <p>シフト</p>
-
-                    </div>
-
                     <Link href="/attendance/approval" className={`menu-item ${url === "/attendance/approval" ? "active" : ""}`}>
 
                         <CheckCheck size={28} />
