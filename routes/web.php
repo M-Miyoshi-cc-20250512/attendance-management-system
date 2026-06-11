@@ -37,21 +37,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/attendance/daily/monthly', [AttendanceDailyController::class, 'monthly']);
     Route::get('/attendance/daily/{id}/edit',[AttendanceDailyController::class,'edit']);
     Route::put('/attendance/daily/{id}',[AttendanceDailyController::class, 'update']);
-    Route::post('/attendance/daily/{id}/apply',[AttendanceDailyController::class, 'apply']);
-
-    Route::get('/attendance/approval',[AttendanceApprovalController::class, 'index']);
-<<<<<<< HEAD
-    Route::get('/attendance/approval/list',[AttendanceApprovalController::class, 'list']
-);
     
-=======
+    Route::get('/attendance/approval',[AttendanceApprovalController::class, 'index']);
     Route::get('/attendance/approval/list',[AttendanceApprovalController::class, 'list']);
     Route::post('/attendance/approval/{id}/approve',[AttendanceApprovalController::class, 'approve']);
     Route::post('/attendance/approval/{id}/reject',[AttendanceApprovalController::class, 'reject']);
     Route::post('/attendance/approval/approve-all',[AttendanceApprovalController::class, 'approveAll']);
     Route::get('/attendance/approval/{id}/edit',[AttendanceApprovalController::class, 'edit']);
     Route::put('/attendance/approval/{id}',[AttendanceApprovalController::class, 'update']);
->>>>>>> be09220354dfe388b4848e8044645531a62c44cb
 });
 
 require __DIR__.'/auth.php';

@@ -4,13 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\AttendanceDaily;
 use App\Models\User;
-<<<<<<< HEAD
-=======
 use App\Models\WorkTypeMaster;
 use App\Models\Location;
 use App\Models\AttendanceBreak;
 use App\Models\UserWorkSetting;
->>>>>>> be09220354dfe388b4848e8044645531a62c44cb
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 
@@ -24,16 +21,6 @@ class AttendanceApprovalController extends Controller
     public function list(Request $request)
     {
         $targetDate = $request->target_date;
-<<<<<<< HEAD
-
-        $users = User::with([
-            'workSetting',
-            'attendanceDaily' => function ($query) use ($targetDate) {
-                $query->whereDate(
-                    'target_date',
-                    $targetDate
-                );
-=======
         $employeeNo = $request->employee_no;
         $employeeName = $request->employee_name;
         $location = $request->location;
@@ -120,13 +107,10 @@ class AttendanceApprovalController extends Controller
                         'target_date',
                         $targetDate
                     );
->>>>>>> be09220354dfe388b4848e8044645531a62c44cb
             }
         ])->get();
 
         return response()->json($users);
-<<<<<<< HEAD
-=======
     }
 
     public function approve($id)
@@ -279,6 +263,5 @@ class AttendanceApprovalController extends Controller
         ]);
 
         return redirect('/attendance/approval');
->>>>>>> be09220354dfe388b4848e8044645531a62c44cb
     }
 }
