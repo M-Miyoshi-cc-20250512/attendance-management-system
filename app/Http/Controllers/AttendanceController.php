@@ -24,10 +24,29 @@ class AttendanceController extends Controller
         ]);
 
         $dayNumber = now()->dayOfWeek;
-        if($dayNumber === 0 || $dayNumber === 6){
-            $workType = WorkTypeMaster::where('name', '公休')->first();
-        }else{
-            $workType = WorkTypeMaster::where('name', '09:00-18:00')->first();
+        if ($dayNumber === 0 || $dayNumber === 6) {
+
+            $workType =
+                WorkTypeMaster::where(
+                    'name',
+                    '公休'
+                )->first();
+        } else {
+
+            $workType =
+                WorkTypeMaster::where(
+                    'is_default',
+                    true
+                )->first();
+
+            if (!$workType) {
+
+                $workType =
+                    WorkTypeMaster::where(
+                        'name',
+                        '09:00-18:00'
+                    )->first();
+            }
         }
 
         AttendanceDaily::create([
@@ -76,10 +95,10 @@ class AttendanceController extends Controller
     public function status()
     {
         $attendanceDaily = AttendanceDaily::where('user_id', Auth::id())
-        ->where('target_date', now()->toDateString())
-        ->first();
+            ->where('target_date', now()->toDateString())
+            ->first();
 
-        if ($attendanceDaily && $attendanceDaily->start_at && !$attendanceDaily->end_at){
+        if ($attendanceDaily && $attendanceDaily->start_at && !$attendanceDaily->end_at) {
             return response()->json([
                 'is_working' => true,
                 'location_id' => $attendanceDaily->location_id,

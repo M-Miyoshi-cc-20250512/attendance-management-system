@@ -1,9 +1,6 @@
 import Header from "@/Components/Header"
 import { useEffect, useState } from "react";
-<<<<<<< HEAD
-=======
 import { router } from "@inertiajs/react";
->>>>>>> be09220354dfe388b4848e8044645531a62c44cb
 import axios from 'axios'
 
 
@@ -12,13 +9,10 @@ export default function Index() {
     const [attendances, setAttendances] = useState([]);
     const [targetDate, setTargetDate] = useState(
         new Date().toISOString().split('T')[0]);
-<<<<<<< HEAD
-=======
     const [employeeNo, setEmployeeNo] = useState('');
     const [employeeName, setEmployeeName] = useState('');
     const [location, setLocation] = useState('');
     const [status, setStatus] = useState('');
->>>>>>> be09220354dfe388b4848e8044645531a62c44cb
 
     // 当日日付割り当て
     useEffect(() => {
@@ -37,9 +31,6 @@ export default function Index() {
         if (targetDate) {
             fetchAttendances();
         }
-<<<<<<< HEAD
-    }, [targetDate]);
-=======
     }, [
         targetDate,
         employeeNo,
@@ -47,22 +38,17 @@ export default function Index() {
         location,
         status
     ]);
->>>>>>> be09220354dfe388b4848e8044645531a62c44cb
 
     // API
     const fetchAttendances = () => {
         axios
             .get("/attendance/approval/list", {
                 params: {
-<<<<<<< HEAD
-                    target_date: targetDate
-=======
                     target_date: targetDate,
                     employee_no: employeeNo,
                     employee_name: employeeName,
                     location: location,
                     status: status
->>>>>>> be09220354dfe388b4848e8044645531a62c44cb
                 }
             })
             .then((response) => {
@@ -73,10 +59,6 @@ export default function Index() {
             });
     };
 
-<<<<<<< HEAD
-    const formatBreakTime = (attendance) => {
-
-=======
     const approveAttendance = async (attendanceId) => {
         try {
             await axios.post(
@@ -105,7 +87,6 @@ export default function Index() {
             return '0:00';
         }
 
->>>>>>> be09220354dfe388b4848e8044645531a62c44cb
         if (!attendance.attendance_break) {
             return '0:00';
         }
@@ -134,8 +115,6 @@ export default function Index() {
         );
     };
 
-<<<<<<< HEAD
-=======
     const approveAllAttendances = async () => {
 
         try {
@@ -160,20 +139,13 @@ export default function Index() {
         }
     };
 
->>>>>>> be09220354dfe388b4848e8044645531a62c44cb
     return (
         <div>
 
             <Header />
 
-<<<<<<< HEAD
-            <h1>勤怠承認一覧</h1>
-
-            <div>
-=======
             <div className="approval-header">
 
->>>>>>> be09220354dfe388b4848e8044645531a62c44cb
                 <input
                     type="date"
                     value={targetDate}
@@ -181,71 +153,6 @@ export default function Index() {
                         setTargetDate(e.target.value)
                     }
                 />
-<<<<<<< HEAD
-            </div>
-
-
-            <table>
-
-                <thead>
-                    <tr>
-                        <th>日付</th>
-                        <th>社員</th>
-                        <th>勤務区分</th>
-                        <th>打刻拠点</th>
-                        <th>出勤時間</th>
-                        <th>退勤時間</th>
-                        <th>休憩時間</th>
-                        <th>添付</th>
-                        <th>交通費</th>
-                        <th>詳細</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    {attendances.map((user) => (
-
-                        <tr key={user.id}>
-
-                            <td>-</td>
-
-                            <td>
-                                {user.employee_no}
-                                <br></br>
-                                {user.name}
-                            </td>
-
-                            <td>
-                                09:00-18:00
-                            </td>
-
-                            <td>-</td>
-
-                            <td>
-                                {user.work_setting?.standard_start_time}
-                            </td>
-
-                            <td>
-                                {user.work_setting?.standard_end_time}
-                            </td>
-
-                            <td>-</td>
-
-                            <td>-</td>
-
-                            <td>-</td>
-
-                            <td>
-                                <button>
-                                    詳細
-                                </button>
-                            </td>
-
-                        </tr>
-
-                    ))}
-=======
 
                 <input
                     type="text"
@@ -496,7 +403,6 @@ export default function Index() {
 
                         );
                     })}
->>>>>>> be09220354dfe388b4848e8044645531a62c44cb
 
                 </tbody>
 

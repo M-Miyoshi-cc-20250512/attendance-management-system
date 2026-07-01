@@ -3,6 +3,11 @@
 @import "./pages/Attendance/Daily/Index.css";
 @import "./pages/Attendance/Daily/Edit.css";
 @import "./pages/Attendance/Approval/Index.css";
+@import "./pages/Attendance/LeaveApplication/Create.css";
+@import "./pages/Attendance/LeaveApplication/Index.css";
+@import "./pages/Employee/Index.css";
+@import "./pages/Employee/Edit.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

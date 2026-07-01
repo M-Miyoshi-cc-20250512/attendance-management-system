@@ -256,6 +256,8 @@ export default function Index() {
                             {/* 勤務区分 */}
                             <td>
                                 {
+                                    row.attendance?.leave_type?.name
+                                    ??
                                     row.attendance?.work_type?.name
                                     ??
                                     row.defaultWorkType

@@ -55,13 +55,13 @@ export default function Header() {
 
                     </Link>
 
-                    <div className="menu-item">
+                    <Link href="/attendance/leave" className={`menu-item ${url === "//attendance/leave" ? "active" : ""}`}>
 
                         <FileOutput size={28} />
 
                         <p>届出</p>
 
-                    </div>
+                    </Link>
 
                     <div className="menu-item">
 
@@ -71,13 +71,14 @@ export default function Header() {
 
                     </div>
 
-                    <div className="menu-item">
+                    <Link href="/system/work-type" className={`menu-item ${url === "/system/work-type" ? "active" : ""}`}>
+
 
                         <Monitor size={28} />
 
                         <p>システム管理</p>
 
-                    </div>
+                    </Link>
 
                 </div>
 
