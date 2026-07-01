@@ -22,6 +22,24 @@ return new class extends Migration
             $table->boolean('is_attendance_counted')
                 ->default(true);
 
+            $table->time('start_time')
+                ->nullable();
+
+            $table->time('end_time')
+                ->nullable();
+
+            $table->integer('break_minutes')
+                ->default(0);
+
+            $table->boolean('is_visible')
+                ->default(true);
+
+            $table->integer('display_order')
+                ->default(0);
+
+            $table->boolean('is_default')
+                ->default(false);
+
             $table->timestamps();
         });
     }

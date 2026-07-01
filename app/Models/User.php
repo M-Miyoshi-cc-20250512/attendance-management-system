@@ -10,8 +10,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\UserWorkSetting;
+use App\Models\WorkCategory;
 
-#[Fillable(['employee_no', 'name', 'email', 'password'])]
+#[Fillable([
+    'employee_no',
+    'work_category_id',
+    'name',
+    'email',
+    'password'
+])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -40,5 +47,12 @@ class User extends Authenticatable
     public function attendanceDaily()
     {
         return $this->hasMany(AttendanceDaily::class);
+    }
+
+    public function workCategory()
+    {
+        return $this->belongsTo(
+            WorkCategory::class
+        );
     }
 }

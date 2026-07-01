@@ -24,6 +24,10 @@ return new class extends Migration
                 ->nullable()
                 ->constrained('work_type_master');
 
+            $table->foreignId('leave_type_id')
+                ->nullable()
+                ->constrained('leave_type_master');
+
             $table->foreignId('location_id')
                 ->constrained('locations');
 

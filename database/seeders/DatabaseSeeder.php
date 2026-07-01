@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             LocationSeeder::class,
             WorkTypeMasterSeeder::class,
+            WorkCategorySeeder::class,
         ]);
     }
 }

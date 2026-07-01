@@ -1,0 +1,81 @@
+/* .leave-application-container {
+    width: 1000px;
+    margin: 30px auto;
+} */
+
+.leave-application-table {
+    width: 1000px;
+    margin: 30px auto;
+    border-collapse: collapse;
+}
+
+.leave-application-table th {
+    width: 200px;
+    padding: 12px;
+    border: 1px solid #dcdcdc;
+    background-color: #f5f5f5;
+    text-align: left;
+}
+
+.leave-application-table td {
+    padding: 12px;
+    border: 1px solid #dcdcdc;
+}
+
+.leave-input {
+    width: 300px;
+    height: 40px;
+    padding: 0 10px;
+}
+
+.leave-textarea {
+    width: 500px;
+    height: 120px;
+    padding: 10px;
+    resize: vertical;
+}
+
+.leave-button-area {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.back-button,
+.save-button,
+.reject-button,
+.approve-button {
+    width: 140px;
+    height: 45px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.back-button {
+    background: white;
+    color: #333;
+    border: 1px solid #ccc;
+
+}
+
+.save-button {
+    background: #28a745;
+    color: white;
+    border: none;
+}
+
+.leave-submit-button {
+    width: 200px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.leave-submit-button:hover {
+    opacity: 0.9;
+}

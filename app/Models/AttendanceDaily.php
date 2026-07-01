@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\WorkTypeMaster;
 use App\Models\User;
 use App\Models\Location;
+use App\Models\LeaveTypeMaster;
 
 class AttendanceDaily extends Model
 {
@@ -14,6 +15,7 @@ class AttendanceDaily extends Model
         'user_id',
         'target_date',
         'work_type_id',
+        'leave_type_id',
         'location_id',
         'start_at',
         'end_at',
@@ -49,6 +51,14 @@ class AttendanceDaily extends Model
         return $this->hasOne(
             AttendanceBreak::class,
             'attendance_daily_id'
+        );
+    }
+
+    public function leaveType()
+    {
+        return $this->belongsTo(
+            LeaveTypeMaster::class,
+            'leave_type_id'
         );
     }
 }

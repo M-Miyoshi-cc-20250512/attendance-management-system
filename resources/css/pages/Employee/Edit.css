@@ -1,0 +1,94 @@
+.employee-edit-container {
+
+    padding: 30px;
+    background: #f5f5f5;
+    min-height: 100vh;
+
+}
+
+.employee-edit-title-area {
+
+    margin-bottom: 20px;
+
+}
+
+.employee-edit-title {
+
+    font-size: 28px;
+    font-weight: bold;
+
+}
+
+.employee-edit-table {
+
+    width: 100%;
+    max-width: 800px;
+    background: white;
+    border-collapse: collapse;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+}
+
+.employee-edit-table th {
+
+    width: 200px;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+
+}
+
+.employee-edit-table td {
+
+    border: 1px solid #ddd;
+    padding: 15px;
+
+}
+
+.employee-edit-input,
+.employee-edit-select {
+
+    width: 300px;
+    height: 40px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+}
+
+.employee-edit-button-area {
+
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+
+}
+
+.employee-back-button {
+
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+
+.employee-update-button {
+
+    background: #1976d2;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+
+.employee-back-button:hover,
+.employee-update-button:hover {
+
+    opacity: 0.8;
+
+}

@@ -27,7 +27,8 @@ class AttendanceDailyController extends Controller
 
         $data = AttendanceDaily::with([
             'workType',
-            'attendanceBreak'
+            'attendanceBreak',
+            'leaveType',
         ])
             ->where('user_id', Auth::id())
             ->whereBetween('target_date', [$start, $end])
@@ -43,7 +44,15 @@ class AttendanceDailyController extends Controller
             ->where('user_id', Auth::id())
             ->findOrFail($id);
 
-        $workTypes = WorkTypeMaster::all();
+        $workTypes =
+            WorkTypeMaster::where(
+                'is_visible',
+                true
+            )
+            ->orderBy(
+                'display_order'
+            )
+            ->get();
         $locations = Location::all();
 
         return Inertia::render(

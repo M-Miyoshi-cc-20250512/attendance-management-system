@@ -11,5 +11,12 @@ class WorkTypeMaster extends Model
     protected $fillable = [
         'code',
         'name',
+        'is_attendance_counted',
+        'start_time',
+        'end_time',
+        'break_minutes',
+        'is_visible',
+        'display_order',
+        'is_default',
     ];
 }
